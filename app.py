@@ -3,8 +3,11 @@ import pandas as pd
 import os 
 
 # Import profiling capabilities
-import pandas_profiling
+import pandas_profiling 
+from streamlit_pandas_profiling import st_profile_report
 
+# ML libraries
+from pycaret.classification import setup, compare_models, pull, save_model
 
 
 with st.sidebar:
@@ -26,12 +29,23 @@ if choice == "Upload":
         st.dataframe(df)
 
 if choice == "Profiling":
-    pass
+    st.title("Automated Exploratory Data Analysis")
+    profile_report = df.profile_report()
+    st_profile_report(profile_report)
 
 
 if choice == "Model":
-    pass
-
+    st.title("Machine Learning Model")
+    target = st.selectbox("Select Your Target", df.columns)
+    setup(df, target=target, silent=True)
+    setup_df = pull()
+    st.info("This is the ML experiment settings")
+    st.dataframe(setup_df)
+    best_model = compare_models()
+    compare_df = pull()
+    st.info("This is the ML Model")
+    st.dataframe(compare_df)
+    best_model
 
 if choice == "Download":
     pass
