@@ -17,6 +17,7 @@ with st.sidebar:
     st.title("Stock Price Visualize Tool")
     choice = st.radio("Menu", ["Upload", "Profiling", "Visualize", "Download"])
     st.info("You can upload your stock dataset and get the visualization of the data")
+    
 if os.path.exists("sourcedata.csv"):
     df = pd.read_csv("sourcedata.csv", index_col=None)
 
