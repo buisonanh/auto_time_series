@@ -17,7 +17,7 @@ with st.sidebar:
     st.title("Stock Price Visualize Tool")
     choice = st.radio("Menu", ["Upload", "Profiling", "Visualize", "Download"])
     st.info("You can upload your stock dataset and get the visualization of the data")
-    
+
 if os.path.exists("sourcedata.csv"):
     df = pd.read_csv("sourcedata.csv", index_col=None)
 
@@ -35,7 +35,6 @@ if choice == "Profiling":
         profile_report = df.profile_report()
         st_profile_report(profile_report)
 
-
 if choice == "Visualize":
     st.title("Data Visualization")
     if st.button("Start Visualizing"):
@@ -48,7 +47,6 @@ if choice == "Visualize":
             ax.set_title(col)
             ax.set_xlabel("Date")
             st.pyplot(fig)
-
 
 if choice == "Download":
     pass
