@@ -11,7 +11,6 @@ from streamlit_pandas_profiling import st_profile_report
 # ML libraries
 from sklearn.linear_model import LinearRegression
 
-
 with st.sidebar:
     st.image("image.png")
     st.title("Stock Price Visualize Tool")
