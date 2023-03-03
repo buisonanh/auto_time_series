@@ -16,13 +16,13 @@ with st.sidebar:
     st.image("image.png")
     st.title("Stock Price Visualize Tool")
     choice = st.radio("Menu", ["Upload", "Profiling", "Visualize", "Download"])
-    st.info("You can upload your stock dataset and get the visualization of the data")
+    st.info("You can upload your stock price dataset and get the visualization of the data")
 
 if os.path.exists("sourcedata.csv"):
     df = pd.read_csv("sourcedata.csv", index_col=None)
 
 if choice == "Upload":
-    st.title("Upload your data for modeling")
+    st.title("Upload your dataset")
     file = st.file_uploader("Upload your file here:")
     if file:
         df = pd.read_csv(file, index_col=None)
@@ -43,7 +43,8 @@ if choice == "Visualize":
         # Create a plot for each column
         for col in plot_cols:
             fig, ax = plt.subplots()
-            ax.plot(df["Date"], df[col])
+            ax.fill_between(df["Date"], df[col],0, alpha=0.2)
+            ax.plot(df["Date"], df[col], alpha=0.8)
             ax.set_title(col)
             ax.set_xlabel("Date")
             st.pyplot(fig)
