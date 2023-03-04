@@ -49,6 +49,6 @@ if choice == "Visualize":
             st.pyplot(fig)
 
 if choice == "Download":
-    pass
+    st.title("Download the file")
     
 
