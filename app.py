@@ -42,6 +42,7 @@ if choice == "Visualize":
         # Create a plot for each column
         for col in plot_cols:
             fig, ax = plt.figure()
+            ax = fig.add_subplot(1, 1, 1)
             ax.fill_between(df["Date"], df[col],0, alpha=0.2)
             ax.plot(df["Date"], df[col], alpha=0.8)
             ax.set_title(col)
