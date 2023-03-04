@@ -41,8 +41,7 @@ if choice == "Visualize":
         plot_cols = [col for col in df.columns if col != "Date"]
         # Create a plot for each column
         for col in plot_cols:
-            fig, ax = plt.figure()
-            ax = fig.add_subplot(1, 1, 1)
+            fig, ax = plt.subplots()
             ax.fill_between(df["Date"], df[col],0, alpha=0.2)
             ax.plot(df["Date"], df[col], alpha=0.8)
             ax.set_title(col)
