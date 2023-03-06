@@ -3,6 +3,7 @@ import pandas as pd
 import os 
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime as dt
 
 # Import profiling capabilities
 import pandas_profiling 
@@ -25,6 +26,7 @@ if choice == "Upload":
     file = st.file_uploader("Upload your file here:")
     if file:
         df = pd.read_csv(file, index_col=None)
+        df["Date"] = pd.to_datetime(df["Date"], format="%Y%m%d")
         df.to_csv("sourcedata.csv", index=None)
         st.dataframe(df)
 
