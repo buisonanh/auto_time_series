@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 import os 
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Import profiling capabilities
-import pandas_profiling 
 from streamlit_pandas_profiling import st_profile_report
 
 # ML libraries
