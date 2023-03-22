@@ -37,8 +37,15 @@ if choice == "Profiling":
 if choice == "Multiple Linear Regression":
     st.title("Linear Regression")
     if st.button("Start Predicting"):
-        
+        lrm = LinearRegression()
 
+        g = df[['wheel-base', 'width', 'curb-weight', 'engine-size', 'horsepower', 'highway-mpg']]
+        y_m = df['price']
+        lrm.fit(g,y_m)
+
+        y_m_predict = lrm.predict(g)
+        y_m_predict[0:5]
+        print(f'Ptrinh du doan gia bang cac bien la: y = {lrm.coef_[0]} wheel-base +  {lrm.coef_[1]} width +  {lrm.coef_[2]} curb-weight +  {lrm.coef_[3]} engine-size + {lrm.coef_[4]} horsepower + {lrm.coef_[5]} highway-mpg + {lrm.intercept_}')
 if choice == "Download":
     st.title("Download the file")
     
