@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os 
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 # Import profiling capabilities
 from streamlit_pandas_profiling import st_profile_report
@@ -33,19 +34,10 @@ if choice == "Profiling":
         profile_report = df.profile_report()
         st_profile_report(profile_report)
 
-if choice == "Visualize":
-    st.title("Data Visualization")
-    if st.button("Start Visualizing"):
-        # Remove "Date" column from the list of columns
-        plot_cols = [col for col in df.columns if col != "Date"]
-        # Create a plot for each column
-        for col in plot_cols:
-            fig, ax = plt.subplots()
-            ax.fill_between(df["Date"], df[col],0, alpha=0.2)
-            ax.plot(df["Date"], df[col], alpha=0.8)
-            ax.set_title(col)
-            ax.set_xlabel("Date")
-            st.pyplot(fig)
+if choice == "Multiple Linear Regression":
+    st.title("Linear Regression")
+    if st.button("Start Predicting"):
+        
 
 if choice == "Download":
     st.title("Download the file")
